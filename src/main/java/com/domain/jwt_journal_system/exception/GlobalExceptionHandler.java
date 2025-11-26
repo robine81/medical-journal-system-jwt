@@ -17,4 +17,11 @@ public class GlobalExceptionHandler {
         error.put("Error", ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
+
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    public ResponseEntity<Map<String, String>> handleAccessDenied(ResourceAlreadyExistsException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("Error", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    }
 }
