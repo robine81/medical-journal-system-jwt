@@ -1,10 +1,10 @@
     -- Roller
-    INSERT INTO roles(name) VALUES ('ROLE_USER');   -- Patient
-    INSERT INTO roles(name) VALUES ('ROLE_ADMIN');  -- Läkare
+    INSERT INTO roles(name) VALUES ('USER');   -- Patient
+    INSERT INTO roles(name) VALUES ('ADMIN');  -- Läkare
 
     -- Läkare (användarnamn = deras namn)
     INSERT INTO users(username, password, full_name)
-    VALUES ('dr.svensson', '$2a$12$VAbgw3A6dpd75tEUudrqXOlelyuqecc54N9WNfxN7zStPQV7aY8EO', 'Dr. Svensson');
+    VALUES ('dr.svensson', '$2a$12$hHPNY3T.0lKffbj4qCIskuBAk5FA1w8h6hdnufq4B/e.AJ3/oW76y', 'Dr. Svensson');
 
     INSERT INTO users(username, password, full_name)
     VALUES ('dr.lindgren', '$2a$12$CXqSeBneszgxnW96G8KDZuk44Px5KeBTN3BHGnZKqv1jv8nkZBrTC', 'Dr. Lindgren');
