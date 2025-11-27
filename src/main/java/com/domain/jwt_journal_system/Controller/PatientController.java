@@ -12,17 +12,17 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/api/patients")
+@RequestMapping("/api")
 public class PatientController {
     private final PatientService service;
 
     public PatientController(PatientService service) { this.service = service; }
 
-    @GetMapping
+    @GetMapping("/admin/patients")
     public ResponseEntity<List<PatientResDTO>> getAll(){ return ResponseEntity
             .ok(service.getAll()); }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/{id}")
     public ResponseEntity<PatientResDTO> getById(@PathVariable Long id){ return ResponseEntity.ok(service.getPatient(id)); }
 
     @PostMapping ResponseEntity<PatientResDTO> createPatient(@Valid @RequestBody PatientReqDTO dto){
