@@ -1,3 +1,22 @@
+    -- Roller
+    INSERT INTO roles(name) VALUES ('ROLE_USER');   -- Patient
+    INSERT INTO roles(name) VALUES ('ROLE_ADMIN');  -- Läkare
+
+    -- Läkare (användarnamn = deras namn)
+    INSERT INTO users(username, password, full_name)
+    VALUES ('dr.svensson', '$2a$12$VAbgw3A6dpd75tEUudrqXOlelyuqecc54N9WNfxN7zStPQV7aY8EO', 'Dr. Svensson');
+
+    INSERT INTO users(username, password, full_name)
+    VALUES ('dr.lindgren', '$2a$12$CXqSeBneszgxnW96G8KDZuk44Px5KeBTN3BHGnZKqv1jv8nkZBrTC', 'Dr. Lindgren');
+    INSERT INTO user_roles(user_id, role_id) VALUES (1, 2); -- dr.svensson → ADMIN
+    INSERT INTO user_roles(user_id, role_id) VALUES (2, 2); -- dr.lindgren → ADMIN
+
+    INSERT INTO users(username, password, full_name)
+    VALUES ('anna.andersson', '$2a$12$VAbgw3A6dpd75tEUudrqXOlelyuqecc54N9WNfxN7zStPQV7aY8EO', 'Anna Andersson');
+    INSERT INTO user_roles(user_id, role_id) VALUES (3, 1); -- anna.andersson → USER
+   -- UPDATE patients SET user_id = 3 WHERE personal_number = '199001011234';
+
+
 INSERT INTO patients (first_name, last_name, personal_number, phone_number, email, address)
 VALUES
     ('Anna', 'Andersson', '199001011234', '0701234567', 'anna.andersson@email.com', 'Storgatan 1, Stockholm'),
