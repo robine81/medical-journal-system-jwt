@@ -2,8 +2,6 @@ package com.domain.jwt_journal_system.Model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
