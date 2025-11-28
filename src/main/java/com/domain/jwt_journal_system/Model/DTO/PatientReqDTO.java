@@ -8,8 +8,8 @@ public class PatientReqDTO {
     @NotBlank(message = "First name must be provided")
     @Size(min = 2, message = "First name must contain at least 2 characters")
     private String firstName;
-    @NotBlank(message = "First name must be provided")
-    @Size(min = 2, message = "First name must contain at least 2 characters")
+    @NotBlank(message = "Last name must be provided")
+    @Size(min = 2, message = "Last name must contain at least 2 characters")
     private String lastName;
     @NotBlank(message = "Personal number must be provided")
     @Size(min = 12, max = 13, message = "Personal number must be between 12-13 characters")
