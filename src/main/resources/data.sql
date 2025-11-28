@@ -4,7 +4,7 @@
 
     -- Läkare (användarnamn = deras namn)
     INSERT INTO users(username, password, full_name)
-    VALUES ('dr.svensson', '$2a$12$hHPNY3T.0lKffbj4qCIskuBAk5FA1w8h6hdnufq4B/e.AJ3/oW76y', 'Dr. Svensson');
+    VALUES ('dr.svensson', '$2a$12$hHPNY3T.0lKffbj4qCIskuBAk5FA1w8h6hdnufq4B/e.AJ3/oW76y', 'Dr. Svensson'); ---1234
 
     INSERT INTO users(username, password, full_name)
     VALUES ('dr.lindgren', '$2a$12$CXqSeBneszgxnW96G8KDZuk44Px5KeBTN3BHGnZKqv1jv8nkZBrTC', 'Dr. Lindgren');
@@ -12,7 +12,7 @@
     INSERT INTO user_roles(user_id, role_id) VALUES (2, 2); -- dr.lindgren → ADMIN
 
     INSERT INTO users(username, password, full_name)
-    VALUES ('anna.andersson', '$2a$12$VAbgw3A6dpd75tEUudrqXOlelyuqecc54N9WNfxN7zStPQV7aY8EO', 'Anna Andersson');
+    VALUES ('anna.andersson', '$2a$12$hHPNY3T.0lKffbj4qCIskuBAk5FA1w8h6hdnufq4B/e.AJ3/oW76y', 'Anna Andersson'); --1234
     INSERT INTO user_roles(user_id, role_id) VALUES (3, 1); -- anna.andersson → USER
    -- UPDATE patients SET user_id = 3 WHERE personal_number = '199001011234';
 
@@ -32,3 +32,4 @@ VALUES
     (2, 'Migrän', 'Smärtstillande medicin', 'Återkom vid behov', '2024-09-10', 'Dr. Berg'),
     (3, 'Astma', 'Inhalator ordinerad', 'Patient ska använda vid behov', '2024-11-10', 'Dr. Lindgren'),
     (4, 'Fotledsstukning', 'Tejpning och vila', 'Stukad under fotbollsmatch', '2024-11-15', 'Dr. Svensson');
+

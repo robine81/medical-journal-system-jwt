@@ -22,7 +22,7 @@ public class PatientService {
         this.mapper = mapper;
     }
 
-    public List<PatientResDTO> getAll(){
+    public List<PatientResDTO> getAllPatients(){
         List<Patient> patients = repo.findAll();
         List<PatientResDTO> patientResDTOS = new ArrayList<>();
 
@@ -47,10 +47,36 @@ public class PatientService {
         return mapper.toPatientResponseDTO(repo.save(mapper.toPatientEntity(dto)));
     }
 
-    // CRUD controller
-    //application-dev
-    //LoginReqDTO, AppUser, Role, CustomUserDetailService
-    //JwtFilter, JwtService
-    //roles, login, session
+    public PatientResDTO updatePatient(Long id, PatientReqDTO dto) {
+        // Hämta befintlig patient
+        Patient existingPatient = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Patient not found with id: " + id));
+
+        // Kolla om personnummer ändras och om det nya redan finns
+        if (!existingPatient.getPersonalNumber().equals(dto.getPersonalNumber())
+                && repo.existsByPersonalNumber(dto.getPersonalNumber())) {
+            throw new ResourceAlreadyExistsException("Personal number " +
+                    dto.getPersonalNumber() + " is already registered");
+        }
+
+        // Uppdatera ALLA fält
+        existingPatient.setFirstName(dto.getFirstName());
+        existingPatient.setLastName(dto.getLastName());
+        existingPatient.setPersonalNumber(dto.getPersonalNumber());
+        existingPatient.setPhoneNumber(dto.getPhoneNumber());
+        existingPatient.setEmail(dto.getEmail());
+        existingPatient.setAddress(dto.getAddress());
+
+        // Spara och returnera
+        return mapper.toPatientResponseDTO(repo.save(existingPatient));
+    }
+
+    public void deletePatient(Long id) {
+        // Kolla att patienten finns
+        if (!repo.existsById(id)) {
+            throw new RuntimeException("Patient not found with id: " + id);
+        }
+        repo.deleteById(id);
+    }
 
 }
